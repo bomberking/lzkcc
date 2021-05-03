@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>InLine</title>
     <link rel="stylesheet" href="css/main.css">
+    <script src="script/datafolder.js" type="text/javascript" charset="utf-8"  defer></script>
+    <script src="script/participant.js" type="text/javascript" charset="utf-8"  defer></script>
     <script src="script/application.js" type="text/javascript" charset="utf-8" async defer></script>
 </head>
 
@@ -16,30 +18,18 @@
             <caption>Line Up.</caption>
             <thead>
                 <tr>
-                    <th>Num.</th>
-                    <th>Nick Name</th>
-                    <th>Tel.</th>
-                    <th>Time Wait</th>
+                    <th> Num. </th>
+                    <th> Nick Name </th>
+                    <th> Tel. </th>
+                    <th> Time Waited </th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td colspan="1">data</td>
-                    <td colspan="1">data</td>
-                    <td colspan="1">data</td>
-                    <td colspan="1">data</td>
-                </tr>
-                <tr>
-                    <td colspan="1">data</td>
-                    <td colspan="1">data</td>
-                    <td colspan="1">data</td>
-                    <td colspan="1">data</td>
-                </tr>
             </tbody>
         </table>
         <div class="operZoon">
             <a onclick="dialogToggle()" style="width:12em" class="button button-glow button-border button-rounded button-primary">Hand In</a>
-            <a onclick="dialogToggle()" style="width:12em;margin-top:20px;" class="button red button-glowred button-border button-rounded button-primary">Announce Next</a>
+            <a onclick="announceNext()" style="width:12em;margin-top:20px;" class="button red button-glowred button-border button-rounded button-primary">Announce Next</a>
         </div>
     </div>
     <div id="dialogbg" class="dialogbg">
@@ -47,12 +37,12 @@
             <form>
 	            <div class="header">
 	                <div class="hp-row" style="margin-top:10px">
-	                    <input type="text" required="required">
+	                    <input id="inputName" type="text" required="required">
 	                    <span class="bar"></span>
 	                    <label>Nick Name</label>
 	                </div>
 	                <div class="hp-row" style="margin-top:10px">
-	                    <input type="text" required="required">
+	                    <input id="inputTel" type="text" required="required">
 	                    <span class="bar"></span>
 	                    <label>Tel</label>
 	                </div>
@@ -60,7 +50,7 @@
             </form>
             <div class="footer">
                 <button onclick="dialogToggle()" class="cancel">Quit</button>
-                <button class="confirm">Confirm</button>
+                <button onclick="welcomeParticipant()" class="confirm">Confirm</button>
             </div>
         </div>
     </div>

@@ -8,11 +8,15 @@
     mytime();
     setTimeout(function() {
         document.querySelector('#dialogbg').style.height = window.innerHeight + "px";
-        document.querySelector('#dialogbg').style.display = "none"
+        document.querySelector('#dialogbg').style.display = "none";
     }, 1);
     setInterval(function() {
-        mytime()
+        mytime();
+        updateWaitedMinutes();
     }, 1000);
+
+    window.datafolder = new DataFolder();
+
 })();
 
 function dialogToggle() {
@@ -22,4 +26,38 @@ function dialogToggle() {
     } else {
         x.style.display = "none";
     }
+}
+
+function welcomeParticipant(e) {
+	let name = document.querySelector('#inputName').value;
+	let tel = document.querySelector('#inputTel').value;
+	if (!name) {alert("Input your name, Please!");return;};
+	if (!tel) {alert("Input your Telephone Number, Please!");return;};
+    let participant = new Participant(datafolder.lineNow.length+datafolder.lineHis.length+1,name,tel);
+    datafolder.lineIn(participant);
+    document.querySelector("tbody").appendChild(participant.createDom());
+    dialogToggle();
+    resetDialogInput();
+}
+
+function announceNext(e)
+{
+	let tbodyDom = document.querySelector("tbody");
+	let removedDom = tbodyDom.removeChild(tbodyDom.childNodes[0]);
+	let removedParticipant = datafolder.lineOut();
+	alert(`Welcome ${removedParticipant.pname}!${removedParticipant.timeWaited()}`);
+}
+
+function resetDialogInput()
+{
+	document.querySelector('#inputName').value=null;
+	document.querySelector('#inputTel').value=null;
+}
+
+function updateWaitedMinutes()
+{
+	datafolder.lineNow.forEach(function(item){
+	let td = document.querySelector('#num'+item.num);
+	td.innerHTML = item.minutesWaited();
+});
 }
