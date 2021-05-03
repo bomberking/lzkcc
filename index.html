@@ -10,9 +10,9 @@
 </head>
 
 <body>
-	<div id="dateDiv">YYYY-MM-DD HH:MI:SS</div>
+    <div id="dateDiv">YYYY-MM-DD HH:MI:SS</div>
     <div class="main-container">
-        <table class="myTable" border="1">
+        <table class="myTable" cellspacing="0" cellpadding="0">
             <caption>Line Up.</caption>
             <thead>
                 <tr>
@@ -38,14 +38,28 @@
             </tbody>
         </table>
         <div class="operZoon">
-        	<a onclick="dialogToggle()" class="button button-glow button-border button-rounded button-primary">Hand In</a>
+            <a onclick="dialogToggle()" style="width:12em" class="button button-glow button-border button-rounded button-primary">Hand In</a>
+            <a onclick="dialogToggle()" style="width:12em;margin-top:20px;" class="button red button-glowred button-border button-rounded button-primary">Announce Next</a>
         </div>
     </div>
     <div id="dialogbg" class="dialogbg">
-    	<div class="dialog">
-            <p class="header">提示文字</p>
+        <div class="dialog">
+            <form>
+	            <div class="header">
+	                <div class="hp-row" style="margin-top:10px">
+	                    <input type="text" required="required">
+	                    <span class="bar"></span>
+	                    <label>Nick Name</label>
+	                </div>
+	                <div class="hp-row" style="margin-top:10px">
+	                    <input type="text" required="required">
+	                    <span class="bar"></span>
+	                    <label>Tel</label>
+	                </div>
+	            </div>
+            </form>
             <div class="footer">
-                <button class="cancel">Quit</button>
+                <button onclick="dialogToggle()" class="cancel">Quit</button>
                 <button class="confirm">Confirm</button>
             </div>
         </div>
